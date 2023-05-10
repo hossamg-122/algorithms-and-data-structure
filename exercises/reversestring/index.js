@@ -7,12 +7,12 @@
 //   reverse('Greetings!') === '!sgniteerG'
 
 function reverse(str) {
-  let reversedString = "";
-  for (const char of str) {
-    reversedString = char + reversedString;
+  let reversedString = [];
+  let modifiedString = str.split("");
+  for (let i = 0; i < modifiedString.length; i++) {
+    reversedString[i] = modifiedString[str.length - 1 - i];
   }
-
-  return reversedString;
+  return reversedString.join("");
 }
 
 //1st solution with array methods
