@@ -13,7 +13,7 @@ function palindrome(str) {
   for (const char of str) {
     reversedString = char + reversedString;
   }
-  return str === reversedString;
+  return str.split("").every((char, i) => char === reversedString[i]);
 }
 
 module.exports = palindrome;
