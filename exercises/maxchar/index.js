@@ -8,10 +8,7 @@
 function maxChar(str) {
   let container = {};
   for (const char of str) {
-    if (container[char]) container[char]++;
-    else {
-      container[char] = 1;
-    }
+    container[char] = container[char] + 1 || 1;
   }
   return Object.keys(container).reduce((prev, curr) => {
     return container[curr] > container[prev] ? curr : prev;
@@ -22,10 +19,7 @@ function maxChar(str) {
 // function maxChar(str) {
 //     let container = {};
 //     for (const char of str) {
-//       if (container[char]) container[char]++;
-//       else {
-//         container[char] = 1;
-//       }
+//       container[char] = container[char] + 1 || 1;
 //     }
 //     return Object.keys(container).reduce((prev, curr) => {
 //       return container[curr] > container[prev] ? curr : prev;
