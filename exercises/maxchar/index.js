@@ -6,7 +6,7 @@
 // maxChar("apple 1231111") === "1"
 
 function maxChar(str) {
-  let container = {};
+  const container = {};
   for (const char of str) {
     container[char] = container[char] + 1 || 1;
   }
