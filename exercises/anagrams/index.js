@@ -9,29 +9,37 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
-  const getCharsCount = (string) =>
-    string
-      .toLowerCase()
-      .replace(/[^\w]/g, "")
-      .split("")
-      .reduce((prev, curr) => {
-        prev[curr] = prev[curr] + 1 || 1;
+  const cleanString = (string) =>
+    string.toLowerCase().replace(/[^\w]/g, "").split("").sort().join("");
+  const modifiedStringA = cleanString(stringA);
 
-        return prev;
-      }, {});
-  const modifiedStringA = getCharsCount(stringA);
-  const modifiedStringB = getCharsCount(stringB);
-  if (
-    Object.keys(modifiedStringA).length !== Object.keys(modifiedStringB).length
-  )
-    return false;
+  const modifiedStringB = cleanString(stringB);
 
-  let isAnagram = false;
-
-  for (const key in modifiedStringA) {
-    isAnagram = modifiedStringA[key] === modifiedStringB[key] ? true : false;
-  }
-  return isAnagram;
+  return modifiedStringA === modifiedStringB;
 }
 
 module.exports = anagrams;
+
+// 1st solution
+// function anagrams(stringA, stringB) {
+//     const getCharsCount = (string) =>
+//       string
+//         .toLowerCase()
+//         .replace(/[^\w]/g, "")
+//         .split("")
+//         .reduce((prev, curr) => {
+//           prev[curr] = prev[curr] + 1 || 1;
+//           return prev;
+//         }, {});
+//     const modifiedStringA = getCharsCount(stringA);
+//     const modifiedStringB = getCharsCount(stringB);
+//     if (
+//       Object.keys(modifiedStringA).length !== Object.keys(modifiedStringB).length
+//     )
+//       return false;
+//     let isAnagram = false;
+//     for (const key in modifiedStringA) {
+//       isAnagram = modifiedStringA[key] === modifiedStringB[key] ? true : false;
+//     }
+//     return isAnagram;
+//   }
