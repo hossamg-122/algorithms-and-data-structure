@@ -9,18 +9,22 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
-  if (stringA.length !== stringB.length) return false;
-  const getCharsCount = (array) =>
-    array.split("").reduce((prev, curr) => {
-      if (prev[curr]) {
-        prev[curr] = prev[curr] + 1;
-      } else {
-        prev[curr] = 1;
-      }
-      return prev;
-    }, {});
+  const getCharsCount = (string) =>
+    string
+      .toLowerCase()
+      .replace(/[^\w]/g, "")
+      .split("")
+      .reduce((prev, curr) => {
+        prev[curr] = prev[curr] + 1 || 1;
+
+        return prev;
+      }, {});
   const modifiedStringA = getCharsCount(stringA);
   const modifiedStringB = getCharsCount(stringB);
+  if (
+    Object.keys(modifiedStringA).length !== Object.keys(modifiedStringB).length
+  )
+    return false;
 
   let isAnagram = false;
 
